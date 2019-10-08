@@ -6,11 +6,8 @@ using UnityEngine.UI;
 
 public class Gazeeeeeeee : MonoBehaviour {
     private GazeAware gazeAware;
-    [SerializeField]
-    Text lifeText;
-    private int score = 100;
 
-    eyePosition eyeposition;
+    //private int point = 100;
 
 	// Use this for initialization
 	void Start () {
@@ -20,12 +17,13 @@ public class Gazeeeeeeee : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        lifeText.text = point.ToString();
+
         bool flag = gazeAware.HasGazeFocus;
         Debug.Log(flag);
         if (flag)
         {
-            if (gameObject.tag == "Fruits")
+            Destroy(this.gameObject);
+            /*if (gameObject.tag == "Fruits")
             {
                 Destroy(this.gameObject);
                 point += 30;
@@ -34,9 +32,15 @@ public class Gazeeeeeeee : MonoBehaviour {
             {
                 Destroy(this.gameObject);
                 point -= 50;
-            }
+            }*/
         }
 	}
 
-    
+  /*  public int Sentpoint()
+    {
+        get{ return point; }
+        set{ point = value; }
+    }
+    */
+
 }

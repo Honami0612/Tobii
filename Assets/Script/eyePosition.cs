@@ -22,6 +22,7 @@ public class eyePosition : MonoBehaviour
 
     [SerializeField]
     float timeOut;
+    [SerializeField]
     private float timeElapsed;
     [SerializeField]
     List<GameObject> sumObj = new List<GameObject>();
@@ -80,7 +81,7 @@ public class eyePosition : MonoBehaviour
         // GoBack();
         // RightLeft();
 
-       //itObj(flag);
+       HitObj(flag);
 
         Life();
         if (point <= 0)
