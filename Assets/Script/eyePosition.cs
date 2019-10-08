@@ -42,8 +42,7 @@ public class eyePosition : MonoBehaviour
     SpriteRenderer characterObject;
 
 
-    //gazeAwareクラスを取得。見ているかを管理するクラス。
-    private GazeAware _gazeAware;
+   
 
     // public Transform MainCamera;
 
@@ -51,10 +50,9 @@ public class eyePosition : MonoBehaviour
     void Start()
     {
 
-        //初期化
-        _gazeAware = GetComponent<GazeAware>();
 
-        text.text = "Point" + point.ToString();
+
+        text.text = "Life:" + point.ToString();
         playerPos = transform.position;
         rb = GetComponent<Rigidbody>();
         characterObject = GameObject.FindGameObjectWithTag("Character").GetComponent<SpriteRenderer>();
@@ -65,10 +63,7 @@ public class eyePosition : MonoBehaviour
     void Update()
     {
 
-        //座標を取得。なくても通る気がする。
-        GazePoint gazePoint = TobiiAPI.GetGazePoint();
-        //オブジェクトを見ているとtrueを返してくれるので、オブジェクトを見た場合の処理ができるようになる
-        bool flag = _gazeAware.HasGazeFocus;
+      
 
         timeOut = Random.Range(1.0f, 5.0f);
         fruitsNumber = Random.Range(0, Fruits.Count);
@@ -78,10 +73,8 @@ public class eyePosition : MonoBehaviour
             sumObj.Add(Instantiate(Fruits[fruitsNumber], new Vector3(Random.Range(-30.0f, 50.0f), 3.0f, Random.Range(-19.0f, 20.0f)), Quaternion.identity));
             timeElapsed = 0.0f;
         }
-        // GoBack();
-        // RightLeft();
-
-       HitObj(flag);
+       
+      
 
         Life();
         if (point <= 0)
@@ -90,40 +83,40 @@ public class eyePosition : MonoBehaviour
         }
     }
 
-    void GoBack()
-    {
-        if (Input.GetKey(KeyCode.W))
-        {
-            Debug.Log("W");
-            float up = Time.deltaTime * speed;
-            transform.position += transform.forward * up;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            Debug.Log("S");
-            float down = Time.deltaTime * speed;
-            transform.position -= transform.forward * down;
-        }
+    //void GoBack()
+    //{
+    //    if (Input.GetKey(KeyCode.W))
+    //    {
+    //        Debug.Log("W");
+    //        float up = Time.deltaTime * speed;
+    //        transform.position += transform.forward * up;
+    //    }
+    //    else if (Input.GetKey(KeyCode.S))
+    //    {
+    //        Debug.Log("S");
+    //        float down = Time.deltaTime * speed;
+    //        transform.position -= transform.forward * down;
+    //    }
 
-    }
+    //}
 
-    void RightLeft()
-    {
-        if (Input.GetKey(KeyCode.A))
-        {
-            Debug.Log("A");
-            float left = Time.deltaTime * speed;
-            //  MainCamera.transform.Rotate(0, left, 0);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            Debug.Log("D");
-            float right = Time.deltaTime * speed;
-            // MainCamera.transform.Rotate(0, right, 0);
-        }
-    }
-
-    void HitObj(bool flag)
+    //void RightLeft()
+    //{
+    //    if (Input.GetKey(KeyCode.A))
+    //    {
+    //        Debug.Log("A");
+    //        float left = Time.deltaTime * speed;
+    //        //  MainCamera.transform.Rotate(0, left, 0);
+    //    }
+    //    else if (Input.GetKey(KeyCode.D))
+    //    {
+    //        Debug.Log("D");
+    //        float right = Time.deltaTime * speed;
+    //        // MainCamera.transform.Rotate(0, right, 0);
+    //    }
+    //}
+    /*
+    void HitObj(flag)
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -150,6 +143,17 @@ public class eyePosition : MonoBehaviour
                 text.text = "Point:" + point.ToString();
             }
         }
+    }*/
+
+      public  void AddPoint()
+    {
+        point += 30;
+        text.text = "Life:" + point.ToString();
+    }
+      public void SubPoint()
+    {
+        point -= 40;
+        text.text = "Life:" + point.ToString();
     }
 
     void Life()
