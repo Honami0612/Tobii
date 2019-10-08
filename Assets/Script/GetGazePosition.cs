@@ -23,7 +23,10 @@ public class GetGazePosition : MonoBehaviour {
             gazeOnScreen += (transform.forward * 10f);
             //PC画面の座標からUnityの画面での座標に変換する。
             Eye = Camera.main.ScreenToWorldPoint(gazeOnScreen);
-            Debug.Log(" X = " +Eye.x + ":Y = " +Eye.y + ":Z = " +Eye.z );
+
+            //Debug.Log(" X = " +Eye.x + ":Y = " +Eye.y + ":Z = " +Eye.z );
         }
     }
+
+
 }

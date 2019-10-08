@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Tobii.Gaming;
-//このコードをコンポネントした時、指定したコンポネントを強制的につけて
-//くれる。外すことも出来なくする。
+//このコードをコンポネントした時、指定したコンポネントを強制的につけてくれる。外すことも出来なくする。
 [RequireComponent(typeof(GazeAware))]
 
 public class GazeCheck : MonoBehaviour {
