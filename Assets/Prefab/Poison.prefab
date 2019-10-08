@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114315360377303480}
   - component: {fileID: 195751764351990548}
   - component: {fileID: 114138620957898802}
+  - component: {fileID: 114549604000334884}
   m_Layer: 0
   m_Name: Poison
   m_TagString: Poison
@@ -129,6 +130,17 @@ MonoBehaviour:
   rotationSpeed: 1
   posrange: 10
   targetdistance: 0
+--- !u!114 &114549604000334884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537543926088148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f366f71985c18c4a89e789d0511da6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135022004064569998
 SphereCollider:
   m_ObjectHideFlags: 1
