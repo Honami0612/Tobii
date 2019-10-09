@@ -8636,6 +8636,7 @@ MonoBehaviour:
   sumObj: []
   character: []
   characterObject: {fileID: 0}
+  soundEffect: []
 --- !u!4 &535780555 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4619486662236612, guid: e05ee61d6dad0e54eb51d1c8ec3becc6,
@@ -24385,6 +24386,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8ff1632d94be542d4a6caa82a0729d8f, type: 3}
   - {fileID: 21300000, guid: c78933d91d6e94768bfb8aac88227276, type: 3}
   characterObject: {fileID: 977667036}
+  soundEffect:
+  - {fileID: 8300000, guid: 3fb0404579fa2470a92815d3b9eec02f, type: 3}
+  - {fileID: 8300000, guid: 86a2628f2811a4794b1623b5bb00d6c4, type: 3}
 --- !u!81 &1670493334
 AudioListener:
   m_ObjectHideFlags: 0

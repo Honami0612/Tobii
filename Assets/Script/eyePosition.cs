@@ -45,9 +45,14 @@ public class eyePosition : MonoBehaviour
     [SerializeField]
     SpriteRenderer characterObject;
     float roteSpeed = 3.0f;
+
+    AudioSource audioSource;
+    [SerializeField]
+    List<AudioClip> soundEffect = new List<AudioClip>();
+   
     //Transform transform;
 
-   
+
 
     // public Transform MainCamera;
 
@@ -55,7 +60,7 @@ public class eyePosition : MonoBehaviour
     void Start()
     {
 
-        
+        audioSource = GetComponent<AudioSource>();
         text.text = "Life:" + point.ToString();
         playerPos = transform.position;
         rb = GetComponent<Rigidbody>();
@@ -186,6 +191,7 @@ public class eyePosition : MonoBehaviour
         if (point >= 200)
         {
             characterObject.sprite = character[4];
+            audioSource.PlayOneShot(soundEffect[0]);
         }
         else if (point >= 120)
         {
@@ -202,6 +208,7 @@ public class eyePosition : MonoBehaviour
         else if (point <= 20)
         {
             characterObject.sprite = character[0];
+            audioSource.PlayOneShot(soundEffect[1]);
         }
         else if (point >= 250)
         {
