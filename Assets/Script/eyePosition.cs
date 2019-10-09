@@ -14,6 +14,8 @@ public class eyePosition : MonoBehaviour
     Text text;
     [SerializeField]
     List<GameObject> Fruits = new List<GameObject>();
+    [SerializeField]
+    GameObject Poison ;
     private int fruitsNumber;
 
     private float rotationSpeed = 1f;
@@ -22,9 +24,13 @@ public class eyePosition : MonoBehaviour
     private float speed = 3f;
 
     [SerializeField]
-    float timeOut;
+    float timeOutFruit;
     [SerializeField]
-    private float timeElapsed;
+    float timeOutPoison;
+    [SerializeField]
+    private float timeElapsedFruits;
+    [SerializeField]
+    private float timeElapsedPoison;
     [SerializeField]
     List<GameObject> sumObj = new List<GameObject>();
 
@@ -34,14 +40,12 @@ public class eyePosition : MonoBehaviour
 
     Rigidbody rb;
 
-    private float z;
-    private float x;
-
     [SerializeField]
     List<Sprite> character = new List<Sprite>();
     [SerializeField]
     SpriteRenderer characterObject;
-
+    float roteSpeed = 3.0f;
+    //Transform transform;
 
    
 
@@ -51,12 +55,12 @@ public class eyePosition : MonoBehaviour
     void Start()
     {
 
-
-
+        
         text.text = "Life:" + point.ToString();
         playerPos = transform.position;
         rb = GetComponent<Rigidbody>();
         characterObject = GameObject.FindGameObjectWithTag("Character").GetComponent<SpriteRenderer>();
+        //transform = characterObject.transform;
 
     }
 
@@ -64,18 +68,31 @@ public class eyePosition : MonoBehaviour
     void Update()
     {
 
-      
-
-        timeOut = Random.Range(1.0f, 5.0f);
+        //Vector3 pos = transform.position;
+        //pos.y = 0.5f;
+        //transform.position = pos;
+        characterObject.transform.Rotate(0, roteSpeed, 0);
+        timeOutFruit = Random.Range(1.0f, 5.0f);
+        timeOutPoison = Random.Range(3.0f, 5.0f);
         fruitsNumber = Random.Range(0, Fruits.Count);
-        timeElapsed += Time.deltaTime;
-        if (timeElapsed >= timeOut)
+        timeElapsedFruits += Time.deltaTime;
+        timeElapsedPoison += Time.deltaTime;
+        if (timeElapsedFruits >= timeOutFruit)
         {
-            sumObj.Add(Instantiate(Fruits[fruitsNumber], new Vector3(Random.Range(-30.0f, 50.0f), 3.0f, Random.Range(-19.0f, 20.0f)), Quaternion.identity));
-            timeElapsed = 0.0f;
+
+            sumObj.Add(Instantiate(Fruits[fruitsNumber], new Vector3(Random.Range(-60.0f, 70.0f), 3.0f, Random.Range(-70.0f, 25.0f)), Quaternion.identity));
+            timeElapsedFruits = 0.0f;
+
         }
-       
-      
+        if (timeElapsedPoison >= timeOutPoison)
+        {
+
+            sumObj.Add(Instantiate(Poison, new Vector3(Random.Range(-60.0f, 70.0f), 3.0f, Random.Range(-70.0f, 25.0f)), Quaternion.identity));
+            timeElapsedPoison= 0.0f;
+
+        }
+
+
 
         Life();
         if (point <= 0)
@@ -160,7 +177,7 @@ public class eyePosition : MonoBehaviour
 
     public void SubPointTimer()
     {
-        point -= 5;
+        point -= 6;
         text.text = "Life:" + point.ToString();
     }
 
@@ -170,23 +187,23 @@ public class eyePosition : MonoBehaviour
         {
             characterObject.sprite = character[4];
         }
-        else if (point >= 150)
+        else if (point >= 120)
         {
             characterObject.sprite = character[3];
         }
-        else if (point >= 100)
+        else if (point >= 80)
         {
             characterObject.sprite = character[2];
         }
-        else if (point >= 70)
+        else if (point >= 50)
         {
             characterObject.sprite = character[1];
         }
-        else if (point <= 30)
+        else if (point <= 20)
         {
             characterObject.sprite = character[0];
         }
-        else if (point >= 300)
+        else if (point >= 250)
         {
             characterObject.sprite = character[6];
             SceneManager.LoadScene("FatOverScene");
