@@ -51,7 +51,7 @@ public class ChangeColor : MonoBehaviour
 		// Change the color of the cube
 		if (_gazeAwareComponent.HasGazeFocus)
 		{
-			SetLerpColor(selectionColor);
+            Destroy(this.gameObject);
 		}
 		else
 		{

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Tobii.Gaming;
+using UnityEngine.SceneManagement;
 //このコードをコンポネントした時、指定したコンポネントを強制的につけてくれる。外すことも出来なくする。
 [RequireComponent(typeof(GazeAware))]
 
@@ -80,6 +81,7 @@ public class eyePosition : MonoBehaviour
         if (point <= 0)
         {
             characterObject.sprite = character[5];
+            SceneManager.LoadScene("GameOver");
         }
     }
 
@@ -152,7 +154,13 @@ public class eyePosition : MonoBehaviour
     }
       public void SubPoint()
     {
-        point -= 40;
+        point -= 35;
+        text.text = "Life:" + point.ToString();
+    }
+
+    public void SubPointTimer()
+    {
+        point -= 5;
         text.text = "Life:" + point.ToString();
     }
 
@@ -181,6 +189,7 @@ public class eyePosition : MonoBehaviour
         else if (point >= 300)
         {
             characterObject.sprite = character[6];
+            SceneManager.LoadScene("FatOverScene");
         }
     }
      

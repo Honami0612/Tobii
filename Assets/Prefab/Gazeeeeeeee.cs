@@ -2,37 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Tobii.Gaming;
-using UnityEngine.UI;
+
+
+[RequireComponent(typeof(GazeAware))]
 
 public class Gazeeeeeeee : MonoBehaviour {
     private GazeAware gazeAware;
     private eyePosition eyePosition;
 
 
-    //private int point = 100;
+  
 
 	// Use this for initialization
 	void Start () {
+       
         gazeAware = GetComponent<GazeAware>();
-        eyePosition= GameObject.Find("MainCamera").GetComponent<eyePosition>();
-
+       eyePosition = GameObject.Find("ThirdPersonController/MainCamera").GetComponent<eyePosition>();
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-        bool flag = gazeAware.HasGazeFocus;
-        Debug.Log(flag);
-        if (flag)
+    // Update is called once per frame
+    void Update () {
+
+    //bool flag = gazeAware.HasGazeFocus;
+       
+
+        //  Debug.Log(flag);
+        if (gazeAware.HasGazeFocus)
         {
-            Destroy(this.gameObject);
-            if (gameObject.tag == "Fruits")
+            Debug.LogError("flagin%%%%%%%%%%");
+            if (this.gameObject.tag == "Fruits")
             {
+                Debug.Log("Fruits!!!!!");
                 eyePosition.AddPoint();
                 Destroy(this.gameObject);
             }
-            else if (gameObject.tag == "Poison")
+            else if (this.gameObject.tag == "Poison")
             {
+                Debug.Log("Poison");
                 eyePosition.SubPoint();
                 Destroy(this.gameObject);
 
@@ -40,11 +46,6 @@ public class Gazeeeeeeee : MonoBehaviour {
         }
 	}
 
-    //public int Point
-    //{
-    //    get{ return point; }
-    //    set{ point = value; }
-    //}
-
+   
 
 }
