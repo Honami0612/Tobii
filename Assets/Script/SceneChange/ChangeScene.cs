@@ -2,29 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Tobii.Gaming;
 
 public class ChangeScene : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+
+    private GazeAware gazeAware;
+
+    // Use this for initialization
+    void Start () {
+        gazeAware = GameObject.Find("Canvas/Button").GetComponent<GazeAware>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
-
-    public void OnClick(int number)
-    {
-        switch (number)
+        if (gazeAware.HasGazeFocus)
         {
-            case 0:
-                SceneManager.LoadScene("MainScene");
-                break;
-            case 1:
-                SceneManager.LoadScene("ClearScene");
-                break;
+            SceneManager.LoadScene("MainScene");
         }
     }
+
+
+
+    //public void OnClick(int number)
+    //{
+    //    switch (number)
+    //    {
+    //        case 0:
+    //            SceneManager.LoadScene("MainScene");
+    //            break;
+    //        case 1:
+    //            SceneManager.LoadScene("ClearScene");
+    //            break;
+    //    }
+    //}
 }

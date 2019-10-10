@@ -191,7 +191,7 @@ public class eyePosition : MonoBehaviour
         if (point >= 200)
         {
             characterObject.sprite = character[4];
-            audioSource.PlayOneShot(soundEffect[0]);
+
         }
         else if (point >= 120)
         {
@@ -208,7 +208,7 @@ public class eyePosition : MonoBehaviour
         else if (point <= 20)
         {
             characterObject.sprite = character[0];
-            audioSource.PlayOneShot(soundEffect[1]);
+
         }
         else if (point >= 250)
         {
