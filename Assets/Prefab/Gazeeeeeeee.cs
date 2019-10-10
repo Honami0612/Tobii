@@ -2,41 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Tobii.Gaming;
-using UnityEngine.UI;
+
+
+[RequireComponent(typeof(GazeAware))]
 
 public class Gazeeeeeeee : MonoBehaviour {
     private GazeAware gazeAware;
+    private eyePosition eyePosition;
+
+    AudioSource audioSource;
     [SerializeField]
-    Text lifeText;
-    private int score = 100;
+    List<AudioClip> soundPoint = new List<AudioClip>();
 
-    eyePosition eyeposition;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+
+        audioSource = GetComponent<AudioSource>();
         gazeAware = GetComponent<GazeAware>();
-        
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        lifeText.text = point.ToString();
-        bool flag = gazeAware.HasGazeFocus;
-        Debug.Log(flag);
-        if (flag)
+       eyePosition = GameObject.Find("ThirdPersonController/MainCamera").GetComponent<eyePosition>();
+    }
+
+    // Update is called once per frame
+    void Update () {
+
+    //bool flag = gazeAware.HasGazeFocus;
+       
+
+        //  Debug.Log(flag);
+        if (gazeAware.HasGazeFocus)
         {
-            if (gameObject.tag == "Fruits")
+
+            if (this.gameObject.tag == "Fruits")
             {
+                Debug.Log("Fruits!!!!!");
+                audioSource.PlayOneShot(soundPoint[0]);
+                eyePosition.AddPoint();
                 Destroy(this.gameObject);
-                point += 30;
             }
-            else if (gameObject.tag == "Poison")
+            else if (this.gameObject.tag == "Poison")
             {
+                Debug.Log("Poison");
+                audioSource.PlayOneShot(soundPoint[1]);
+                eyePosition.SubPoint();
                 Destroy(this.gameObject);
-                point -= 50;
+
             }
         }
 	}
 
-    
+   
+
 }
