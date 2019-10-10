@@ -24378,7 +24378,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1343336967}
   Fruits:
-  - {fileID: 1545084806363408, guid: 0f7129eb749934aa29d155bd335b0c17, type: 2}
+  - {fileID: 1564837359591664, guid: 880d66c9768ca4d6d99f38ea6fabfab6, type: 2}
+  - {fileID: 1359632594228762, guid: a843aa87778f74a54a42ea16119331e7, type: 2}
+  - {fileID: 1670966409657704, guid: 3d1499dd5e0ee452c98c8912e0ea0612, type: 2}
   Poison: {fileID: 1537543926088148, guid: 8a6d8601b5475be4baced5ae1912f302, type: 2}
   timeOutFruit: 0
   timeOutPoison: 0
